@@ -1,0 +1,8 @@
+package org.sample.decision_tables;
+
+rule "test"
+when
+    $p : Person( name == "Joe" )
+then
+    $p.setMessage( "Hey Joe!" );
+end

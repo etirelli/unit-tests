@@ -21,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SampleTest {
 
     private KieSession session;
-    private ClassLoader loader;
 
     @BeforeEach
     public void setup() {

@@ -8,6 +8,12 @@
     <artifactId>unit-tests</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <repositories>
+        <repository>
+            <id>local</id>
+            <url>file://${user.home}/.m2/repository</url>
+        </repository>
+    </repositories>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -33,6 +39,7 @@
             <groupId>org.sample</groupId>
             <artifactId>decision-tables</artifactId>
             <version>1.0.0</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- The other dependencies -->

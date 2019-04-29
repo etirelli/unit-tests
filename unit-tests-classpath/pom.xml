@@ -8,12 +8,12 @@
     <artifactId>unit-tests</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <repositories>
+    <!-- repositories>
         <repository>
             <id>local</id>
             <url>file://${user.home}/.m2/repository</url>
         </repository>
-    </repositories>
+    </repositories -->
     <dependencyManagement>
         <dependencies>
             <dependency>

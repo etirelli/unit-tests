@@ -1,28 +1,23 @@
 package com.sample.dttests;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.kie.api.KieServices;
-import org.kie.api.builder.KieRepository;
-import org.kie.api.builder.KieScanner;
 import org.kie.api.builder.ReleaseId;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-import org.kie.internal.io.ResourceFactory;
 import org.sample.decision_tables.Person;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
+
 
 public class SampleTest {
 
     private KieSession session;
 
-    @BeforeEach
+    @Before
     public void setup() {
         // retrieves the factory
         KieServices ks = KieServices.Factory.get();

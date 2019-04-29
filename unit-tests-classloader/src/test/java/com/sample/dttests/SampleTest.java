@@ -1,7 +1,7 @@
 package com.sample.dttests;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieRepository;
 import org.kie.api.builder.ReleaseId;
@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class SampleTest {
 
@@ -22,7 +22,7 @@ public class SampleTest {
     private URL kjar;
     private URLClassLoader loader;
 
-    @BeforeEach
+    @Before
     public void setup() {
         // gets the kjar URL
         kjar = SampleTest.class.getResource("/decision-tables-1.0.0.jar");

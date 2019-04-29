@@ -11,7 +11,7 @@
     <repositories>
         <repository>
             <id>localrepo</id>
-            <url>file://repository</url>
+            <url>file://${project.basedir}/repository</url>
         </repository>
     </repositories>
 

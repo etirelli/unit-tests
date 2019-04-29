@@ -25,7 +25,7 @@ public class SampleTest {
     @Before
     public void setup() {
         // gets the kjar URL
-        kjar = SampleTest.class.getResource("/decision-tables-1.0.0.jar");
+        kjar = SampleTest.class.getResource("/decision-tables-1.2.0.jar");
 
         // creates the classloader to find java classes in the kjar
         loader = new URLClassLoader( new URL[]{kjar} );
@@ -38,7 +38,7 @@ public class SampleTest {
         repository.addKieModule( ResourceFactory.newUrlResource(kjar) );
 
         // Create a GAV reference - using LATEST instead of a fixed version, just as an example
-        ReleaseId releaseId = ks.newReleaseId("org.sample", "decision-tables", "1.0.0");
+        ReleaseId releaseId = ks.newReleaseId("org.sample", "decision-tables", "1.2.0");
 
         // Load GAV jar from local maven repo
         KieContainer kieContainer = ks.newKieContainer(releaseId, loader);
@@ -63,6 +63,25 @@ public class SampleTest {
 
         // check results
         assertEquals( "Good bye Mark", getter.invoke( mark ) );
+    }
+
+    @Test
+    public void testAgeRange() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {
+        // create dataset
+        Class<?> personClass = loader.loadClass("org.sample.decision_tables.Person");
+        Method setter = personClass.getMethod("setAge", int.class);
+        Method getter = personClass.getMethod("getAgeRange" );
+
+        // create dataset
+        Object mark = personClass.newInstance();
+        setter.invoke( mark, 65 );
+
+        // execute rules
+        session.insert(mark);
+        session.fireAllRules();
+
+        // check results
+        assertEquals( "Senior", getter.invoke( mark ) );
     }
 
 }

@@ -23,7 +23,7 @@ public class SampleTest {
         KieServices ks = KieServices.Factory.get();
 
         // Create a GAV reference
-        ReleaseId releaseId = ks.newReleaseId("org.sample", "decision-tables", "1.0.0");
+        ReleaseId releaseId = ks.newReleaseId("org.sample", "decision-tables", "1.2.0");
 
         // Load GAV jar from local maven repo
         KieContainer kieContainer = ks.newKieContainer(releaseId);
@@ -45,6 +45,19 @@ public class SampleTest {
         assertEquals( "Good bye Mark", mark.getMessage() );
     }
 
+    @Test
+    public void testAgeRange() {
+        // create dataset
+        Person mark = new Person();
+        mark.setAge( 65 );
+
+        // execute rules
+        session.insert(mark);
+        session.fireAllRules();
+
+        // check results
+        assertEquals( "Senior", mark.getAgeRange() );
+    }
 
 
 }
